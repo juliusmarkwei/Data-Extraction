@@ -23,7 +23,7 @@ def extract_data():
     for csvfile in glob("*.csv"):
         extracted_data.append(extract_from_csv(csvfile), ignore_index = True)
     
-    # rpocess all json files
+    # process all json files
     for jsonfile in glob("*.json"):
         extracted_data.append(extract_from_json(jsonfile), ignore_index = True)
 
@@ -31,3 +31,9 @@ def extract_data():
         extracted_data.append(extract_from_xml(xmlfile), ignore_index = True)
 
     return extracted_data
+
+def load(taget_file, data_to_load):
+    data_to_load.to_csv(taget_file)
+
+data = extract_data()
+load('compiled_data', data)
